@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.Logging;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
+using System.Diagnostics;
 using System.Text;
 using System.Text.Json;
 
@@ -50,6 +51,7 @@ namespace Infra.RabbitMQ
 
             this.channel.CallbackException += (sender, ea) =>
             {
+                Debug.WriteLine(ea.Exception.Message);
                 //this.InitChannel();
             };
         }
