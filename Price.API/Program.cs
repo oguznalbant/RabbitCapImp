@@ -10,7 +10,7 @@ builder.Services.AddSingleton(typeof(IQueuePublisher<>), typeof(RabbitMqBusQueue
 builder.Services.AddSingleton(typeof(IQueueSubscriber<>), typeof(RabbitMqBusQueue<>));
 builder.Services.AddSingleton<IRabbitConnection, RabbitPersistentConnection>();
 builder.Services.AddHostedService<EventService>();
-
+builder.Services.AddTransient<PriceCalculateService>();
 // Add services to the container.
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

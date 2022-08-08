@@ -33,7 +33,7 @@ namespace Basket.API.Controllers
         [HttpPost("addproductWithCap")]
         public Task AddProductWithCap(string message)
         {
-            Parallel.For(0, 1, new ParallelOptions { MaxDegreeOfParallelism = 1 }, a =>
+            Parallel.For(0, 100, new ParallelOptions { MaxDegreeOfParallelism = 5 }, a =>
             {
                 _capPublisher.Publish("test.queue", new IntegrationEvent { CreatedDate = DateTime.Now, EventId = Guid.NewGuid(), Message = message });
             });
